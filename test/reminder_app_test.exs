@@ -1,8 +1,7 @@
 defmodule ReminderAppTest do
   use ExUnit.Case
-  doctest ReminderApp
 
-  test "greets the world" do
-    assert ReminderApp.hello() == :world
+  test "remind/0" do
+    assert :ok == ReminderApp.remind()
   end
 end
