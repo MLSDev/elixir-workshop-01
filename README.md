@@ -1,21 +1,30 @@
-# ReminderApp
+# Reminder app
 
-**TODO: Add description**
+Internal MLSDev Elixir Workshop #01 - Automated Slack reminder.
 
-## Installation
+## Up and running
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `reminder_app` to your list of dependencies in `mix.exs`:
+* Set up Slack Webhook URL and reminder text in `config/dev.secret.exs`:
+  ```elixir
+  use Mix.Config
 
-```elixir
-def deps do
-  [
-    {:reminder_app, "~> 0.1.0"}
-  ]
-end
-```
+  config :reminder_app,
+    slack_webhook: "https://hooks.slack.com/services/your-hook",
+    reminder_text: "hello from otp"
+  ```
+* `mix deps.get`
+* `mix test`
+* `iex -S mix`
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/reminder_app](https://hexdocs.pm/reminder_app).
+## Docs
 
+* `mix docs`
+* `open doc/index.html`
+
+## Coverage
+
+* `mix test --cover`
+
+HTML output:
+* `mix coveralls.html`
+* `open cover/excoveralls.html`

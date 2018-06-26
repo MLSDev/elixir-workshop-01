@@ -10,7 +10,7 @@ defmodule ReminderApp do
   @reminder_message Application.get_env(:reminder_app, :reminder_text)
 
   @doc """
-  Send reminder to Slack channel
+  Send reminder to Slack channel.
   """
   def remind do
     {:ok, _response} = @slack_client.post(@hook, @reminder_message)
@@ -18,7 +18,7 @@ defmodule ReminderApp do
   end
 
   @doc """
-  Schedule the reminder
+  Schedule the reminder.
   """
   def schedule(date \\ Timex.today) do
     date
@@ -29,9 +29,9 @@ defmodule ReminderApp do
   end
 
   @doc """
-  Function to pass to Worker
+  Function to pass to Worker.
   """
-  def remind_and_schedule() do
+  def remind_and_schedule do
     remind()
 
     Timex.today
