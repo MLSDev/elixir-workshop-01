@@ -6,15 +6,18 @@ defmodule ReminderApp.Application do
   use Application
 
   def start(_type, _args) do
-    # List all child processes to be supervised
+    import Supervisor.Spec
     children = [
-      # Starts a worker by calling: ReminderApp.Worker.start_link(arg)
-      # {ReminderApp.Worker, arg},
+      worker(ReminderApp.Worker, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: ReminderApp.Supervisor]
-    Supervisor.start_link(children, opts)
+    {:ok, pid} = Supervisor.start_link(children, opts)
+
+    ReminderApp.schedule()
+
+    {:ok, pid}
   end
 end

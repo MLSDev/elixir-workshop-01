@@ -1,14 +1,17 @@
 defmodule ReminderApp.Worker do
+  @moduledoc """
+  Background jobs scheduling and running
+  """
+
   use GenServer
   require Logger
 
-  def start_link(module, fun, args \\ []) do
-    GenServer.start_link(__MODULE__, [module, fun, args], name: __MODULE__)
+  def start_link do
+    GenServer.start_link(__MODULE__, [], name: __MODULE__)
   end
 
-  def init([module, fun, args]) do
-    apply(module, fun, args)
-    {:ok, []}
+  def init(args) do
+    {:ok, args}
   end
 
   #
