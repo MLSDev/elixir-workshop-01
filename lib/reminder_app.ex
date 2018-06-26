@@ -7,11 +7,7 @@ defmodule ReminderApp do
 
   @hook Application.get_env(:reminder_app, :slack_webhook)
 
-  @reminder_message ~S"""
-  Всем привет!
-  Сегодня последний рабочий день месяца.
-  Просьба ко всем заполнить *Harvest* в конце дня во избежание недоразумений при выплате компенсации за Ваш нелегкий труд! :)
-  """
+  @reminder_message Application.get_env(:reminder_app, :reminder_text)
 
   @doc """
   Send reminder to Slack channel
